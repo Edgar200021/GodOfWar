@@ -19,12 +19,13 @@ module.exports = {
 			'windows'
 		],
 		'quotes': [
-			'error',
 			'single'
 		],
 		'semi': [
-			'error',
 			'never'
-		]
+		],
+		"rules": {
+			"no-unused-vars": [{ "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
+		}
 	}
 }

@@ -1,14 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>GodOfWar</title>
-	<link rel="stylesheet" href="./css/style.css">
-	<script defer src="./js/script.js"></script>
-</head>
-<body>
-	
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GodOfWar</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script defer src="./js/script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+		<span class="animated-span"></span>
+        <div class="wrapper__inner">
+          <header class="header">
+            <button class="hamburger">
+              <span class="hamburger__line"></span>
+            </button>
+
+            <nav class="header__menu menu hide">
+              <ul class="menu__list">
+                <li class="menu__item">
+                  <a href="" class="menu__link">editions </a>
+                </li>
+                <li class="menu__item">
+                  <a href="" class="menu__link">controller</a>
+                </li>
+                <li class="menu__item">
+                  <a href="" class="menu__link">ABOUT GAME</a>
+                </li>
+                <li class="menu__item">
+                  <a href="" class="menu__link">Explore</a>
+                </li>
+                <li class="menu__item">
+                  <a href="" class="menu__link">news</a>
+                </li>
+                <li class="menu__item">
+                  <a href="" class="menu__link">FAQ</a>
+                </li>
+                <li class="menu__item">
+                  <select id="languages" value="russian">
+                    <option name="" value="english" id="english">
+                      english
+                    </option>
+                    <option name="" value="russian" id="russian">
+                      russian
+                    </option>
+                  </select>
+                </li>
+              </ul>
+            </nav>
+
+            <div class="header__timer timer">
+              <span class="timer__descr">Realease:</span>
+              <div class="timer__values">
+                <div class="timer__item">
+                  <span class="timer__item-value" id="days">20</span>
+                  <span class="timer__item-descr">D</span>
+                </div>
+                <div class="timer__item">
+                  <span class="timer__item-value" id="hours">20</span>
+                  <span class="timer__item-descr">H</span>
+                </div>
+                <div class="timer__item">
+                  <span class="timer__item-value" id="minutes">59</span>
+                  <span class="timer__item-descr">M</span>
+                </div>
+                <div class="timer__item">
+                  <span class="timer__item-value" id="seconds">59</span>
+                  <span class="timer__item-descr">S</span>
+                </div>
+              </div>
+            </div>
+          </header>
+          <section class="hero">
+            <div class="hero__inner">
+              <h1 class="hero__title first-title">God of War Ragnarök</h1>
+			  <p class="hero__descr">Taking place three years following the events of the previous game, Fimbulwinter, a great winter that spans three summers, is drawing to a close which will begin the prophesied Ragnarök.</p>
+			  <button class="hero__btn btn">buy NOW</button>
+            </div>
+          </section>
+        </div>
+      </div>
+      <section class="editions">editions</section>
+      <section class="controller">controller</section>
+      <section class="about">about</section>
+      <section class="explore">explore</section>
+      <section class="news">news</section>
+      <section class="faq">faq</section>
+      <footer class="footer">footer</footer>
+    </div>
+  </body>
 </html>

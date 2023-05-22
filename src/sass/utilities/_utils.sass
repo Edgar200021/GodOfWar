@@ -1,0 +1,11 @@
+.hide 
+	visibility: none 
+	transform: translateX(-1000%)
+	opacity: 0
+
+
+.show 
+	@include animation(opacity, .1s, .1s, backwards)
+
+.none 
+	display: none

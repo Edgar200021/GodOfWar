@@ -1,0 +1,32 @@
+.menu 
+	transition: all .3s ease
+	&__list 
+		display: flex
+		align-items: center
+		gap: 3rem
+	&__item 
+		color: var(--white-color)
+		opacity: 0.5
+		text-transform: uppercase 
+		&:last-child
+			opacity: 1
+		select 
+			border: none
+			background: none
+			color: inherit
+			@include font(1.4rem, 2.7rem)
+			text-transform: inherit
+			outline: none
+			cursor: pointer
+			option
+				border: none
+				background: rgba(0, 0, 0, 1)
+				color: #fff
+				text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)
+	&__link 
+		display: inline-block
+		@include font(1.4rem, 2.7rem)
+		transition: color .3s ease, transform .3s ease
+		&:hover 
+			color: var(--accent-color)
+			transform: scale(1.1)
