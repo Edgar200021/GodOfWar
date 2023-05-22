@@ -1,4 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
+  //!Hamburger
+
   const hamburgerBtn = document.querySelector('.hamburger'),
     menu = document.querySelector('.menu')
 
@@ -7,6 +9,8 @@ window.addEventListener('DOMContentLoaded', () => {
     menu.classList.toggle('hide')
     menu.classList.toggle('show')
   })
+
+  //! Timer
 
   const deadline = new Date('2023-06-20')
 
@@ -55,6 +59,52 @@ window.addEventListener('DOMContentLoaded', () => {
 
   setTimer('.timer__values', deadline)
 
+  //! Modal
+  const editions = document.querySelector('.editions'),
+    modalCloseBtn = document.querySelector('.close-btn'),
+    modal = document.querySelector('.modal'),
+	form = modal.querySelector('.form')
 
-  
+  editions.addEventListener('click', (e) => {
+    e.preventDefault()
+    if (e.target.classList.contains('card__btn')) {
+      const parent = e.target.closest('.card'),
+        title = parent.querySelector('.card__title').innerText,
+        price = parent.querySelector('.card__price').innerText,
+        formTitle = form.querySelector('.form__subtitle'),
+        formPrice = form.querySelector('.form__summa-price')
+
+      modal.classList.add('modal_active')
+      form.classList.add('form_active')
+
+      formTitle.innerText = title
+      formPrice.innerText = price
+
+      document.body.style.overflow = 'hidden'
+    }
+  })
+
+  modalCloseBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    modal.classList.remove('modal_active')
+    form.classList.remove('form_active')
+    document.body.style.overflow = 'auto'
+  })
+
+  modal.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal_active')) {
+      e.target.classList.remove('modal_active')
+	  form.classList.remove('form_active')
+	  document.body.style.overflow = 'auto'
+    }
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('modal_active')) {
+      modal.classList.remove('modal_active')
+	  form.classList.remove('form_active')
+	  document.body.style.overflow = 'auto'
+    }
+  })
 })

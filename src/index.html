@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <div class="wrapper">
-		<span class="animated-span"></span>
+        <span class="animated-span"></span>
         <div class="wrapper__inner">
           <header class="header">
             <button class="hamburger">
@@ -76,13 +76,72 @@
           <section class="hero">
             <div class="hero__inner">
               <h1 class="hero__title first-title">God of War Ragnarök</h1>
-			  <p class="hero__descr">Taking place three years following the events of the previous game, Fimbulwinter, a great winter that spans three summers, is drawing to a close which will begin the prophesied Ragnarök.</p>
-			  <button class="hero__btn btn">buy NOW</button>
+              <p class="hero__descr">
+                Taking place three years following the events of the previous
+                game, Fimbulwinter, a great winter that spans three summers, is
+                drawing to a close which will begin the prophesied Ragnarök.
+              </p>
+              <button class="hero__btn btn">buy NOW</button>
             </div>
           </section>
         </div>
       </div>
-      <section class="editions">editions</section>
+      <section class="editions">
+        <h2 class="editions__title second-title">Editions</h2>
+
+        <div class="editions__item card">
+          <div
+            class="card__img"
+            style="background-image: url('./assets/img/editions/img-1.jpg')"
+          ></div>
+          <div class="card__info">
+            <h4 class="card__title fourth-title">Standard Edition</h4>
+            <span class="card__descr">PS5</span>
+            <ul class="card__info-list">
+              <li class="card__info-item">Offline play enabled</li>
+              <li class="card__info-item">Remote Play supported</li>
+              <li class="card__info-item">Trigger effect required</li>
+            </ul>
+          </div>
+          <span class="card__price">19.99$</span>
+          <button class="card__btn btn">buy NOW</button>
+        </div>
+        <div class="editions__item card">
+          <div
+            class="card__img"
+            style="background-image: url('./assets/img/editions/img-1.jpg')"
+          ></div>
+          <div class="card__info">
+            <h4 class="card__title fourth-title">Standard Edition</h4>
+            <span class="card__descr">PS4</span>
+            <ul class="card__info-list">
+              <li class="card__info-item">Offline play enabled</li>
+              <li class="card__info-item">Remote Play supported</li>
+              <li class="card__info-item">Trigger effect required</li>
+            </ul>
+          </div>
+          <span class="card__price">19.99$</span>
+          <button class="card__btn btn">buy NOW</button>
+        </div>
+        <div class="editions__item card">
+          <div
+            class="card__img"
+            style="background-image: url('./assets/img/editions/img-2.jpg')"
+          ></div>
+          <div class="card__info">
+            <h4 class="card__title fourth-title">Digital Deluxe Edition</h4>
+            <span class="card__descr">PS5</span>
+            <ul class="card__info-list">
+              <li class="card__info-item">All features of Standard Edition</li>
+              <li class="card__info-item">Darkdale Armour</li>
+              <li class="card__info-item">Official digital soundtrack</li>
+            </ul>
+          </div>
+          <span class="card__price">29.99$</span>
+          <button class="card__btn btn">buy NOW</button>
+        </div>
+     
+      </section>
       <section class="controller">controller</section>
       <section class="about">about</section>
       <section class="explore">explore</section>
@@ -90,5 +149,47 @@
       <section class="faq">faq</section>
       <footer class="footer">footer</footer>
     </div>
+	<div class="modal">
+		<form action="" class="form" style="background-image: url('./assets/img/modal/image.png')">
+			<button class="close-btn">x</button>
+		  <h3 class="form__title third-title">
+			<span class="form__suptitle">GOD OF WAR RAGNAROK</span>
+			<span class="form__subtitle"> STANDARD EDTION</span>
+		  </h3>
+
+		  <div class="form__credit">
+			  <label class="form__label" for="credit">CREDIT CARD:</label>
+			  <input class="form__input" type="number" name="credit" id="credit" placeholder="0000 0000 0000 0000">
+		  </div>
+		  <div class="form__expire">
+			  <label class="form__label" for="expire">Expire:</label>
+			  <input  class="form__input" type="text" name="expire" id="expire" placeholder="mm/yy">
+		  </div>
+		  <div class="form__cv">
+			  <label class="form__label" for="cv">CCV:</label>
+			  <input class="form__input" type="password" name="cv" id="cv" placeholder="***">
+		  </div>
+		  <div class="form__instant">
+			  <label class="form__label" for="instant">Instant:</label>
+			  <input class="form__input" type="text" name="instant" id="instant" placeholder="John Doe">
+		  </div>
+
+		  <div class="form__info">
+		  <div class="form__checkbox">
+			  <input type="checkbox" name="checkbox">
+			  <p>I agree with the <span>rules</span>of the site</p>
+		  </div>
+		  <p class="form__descr">
+			  Download of this product is subject to the PlayStation Network Terms of Service and our Software Usage Terms plus any specific additional conditions applying to this product. If you do not wish to accept these terms, do not download this product. See Terms of Service for more important information.
+		  </p>
+
+		  <div class="form__summa">
+			  <span class="form__summa-descr">YOUR TOTAL SUMMA:</span>
+			  <span class="form__summa-price">19.99$</span>
+		  </div>
+		</div>
+		  <button class="form__btn btn">buy NOW</button>
+		</form>
+	  </div>
   </body>
 </html>

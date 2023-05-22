@@ -1,0 +1,123 @@
+.form 
+	position: relative
+	overflow: hidden
+	display: grid
+	max-width: 47rem 
+	min-height: 52rem
+	width: 100%
+	grid-template-columns: [form-start] repeat(2, [form-col-start] minmax(min-content, 1fr) [form-col-end]) [form-end]
+	gap: 1.6rem 2.6rem
+	grid-template-rows: repeat(4, min-content) 1fr min-content
+	grid-auto-rows: min-content 
+	background-position: bottom
+	background-size: contain
+	background-repeat: no-repeat
+	padding: 3.2rem 3.2rem 1.9rem
+	border-radius: 12px
+	color: var(--white-color)
+	transform: scale(0)
+	transition: transform 1.5s ease
+	background-color: rgba(0, 0 , 0 , .6)
+	&_active 
+		transform: scale(1)
+	&::after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100% 
+		height: 100% 
+		z-index: -1
+		background: linear-gradient(180deg, rgba(79, 96, 152, 0) 63.61%, #30373F 100%) bottom / cover no-repeat
+	&__title 
+		grid-column: form-start / form-end
+		justify-self: center
+		text-align: center
+		max-width: 23rem
+		font-weight: 700
+	span 
+		display: block
+	&__suptitle 
+		color: var(--accent-color)
+	&__credit
+		grid-column: form-start / form-end
+	&__expire
+		grid-column: form-col-start 1 / form-col-end 1
+	&__cv
+		grid-column: form-col-start 2 / form-col-end 2
+	&__instant
+		grid-column: form-start / form-end
+	&__info
+		grid-column: form-start / form-end
+		display: flex 
+		flex-direction: column
+	&__btn
+		grid-column: form-start / form-end
+	&__label 
+		display: block
+		@include font(1rem, 1.2rem)
+		text-transform: uppercase 
+		margin-bottom: .7rem
+	&__input 
+		display: block
+		width: 100%
+		padding: 1.5rem
+		@include font(1.2rem, 1.4rem)
+		color: #D9D9D9
+		background-color: #30373F
+		border: none
+		border-radius: 6px
+		outline: none
+		transition: outline .1s ease
+		&::placeholder
+			text-transform: uppercase
+		&:focus 
+			outline: 1px solid var(--accent-color)
+	&__checkbox 
+		display: flex
+		align-items: center
+		column-gap: 1.2rem
+		margin-bottom: 7px
+		>input[type='checkbox']
+			display: inline-block
+			width: 25px 
+			height: 25px
+			border-radius: 6px
+			appearance: none
+			-webkit-appearance: none
+			outline: none
+			accent-color: var(--accent-color)
+			background-color: #30373F
+			cursor: pointer
+			&:checked
+				appearance: auto
+		>p
+			display: inline-block
+			width: 100%
+			@include font(1rem, 1.2rem)
+			text-transform: uppercase 
+			& span 
+				display: inline-block
+				color: var(--secondary-color)
+	&__descr 
+		@include font(1rem, 1.2rem)
+		color:  #D9D9D9
+		margin-bottom: 7px
+	&__summa 
+		display: flex 
+		justify-content: space-between 
+		align-items: center
+		margin-top: auto
+		&-descr 
+			@include font(1.4rem, 1.7rem, 500)
+		&-price 
+			@include font(2rem, 2.4rem, 500)
+
+.close-btn 
+	position: absolute 
+	top: 12px
+	right: 12px 
+	border: none 
+	background: none
+	color: #D9D9D9
+	@include font(1.6rem, 1.9rem)

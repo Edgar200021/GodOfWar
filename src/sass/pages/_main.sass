@@ -29,7 +29,8 @@
 		@include bg 
 		opacity: .2
 	&__inner 
-		max-width: 140rem 
+		max-width: 146rem 
+		padding: 0 3rem
 		width: 100% 
 		margin: 0 auto
 
@@ -51,7 +52,15 @@
 
 .editions
 	grid-column: col-start 2 / col-end 9
-
+	padding-top: 5rem
+	display: grid 
+	grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr))
+	justify-items: center
+	gap: 1.6rem
+	&__title 
+		text-align: center
+		grid-column: 1 / -1
+		margin-bottom: 1.4rem
 .controller 
 	grid-column: col-start 2 / col-end 9
 	padding: 0 8rem
