@@ -548,6 +548,16 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1.6rem;
   border-radius: 6px;
   background-color: #191D1E;
+  opacity: 0;
+  animation-duration: 0.5s;
+  animation-delay: 0.2s;
+  animation-fill-mode: backwards;
+}
+.card:nth-child(3) {
+  animation-delay: 0.5s;
+}
+.card:nth-child(4) {
+  animation-delay: 0.8s;
 }
 .card__info {
   text-align: center;
@@ -900,6 +910,16 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(0);
   }
 }
+@keyframes scale {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 @keyframes animate {
   from {
     transform: translateX(0);
@@ -989,6 +1009,9 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   justify-items: center;
   gap: 1.6rem;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.3s;
 }
 .editions__title {
   text-align: center;

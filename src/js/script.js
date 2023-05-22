@@ -63,7 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const editions = document.querySelector('.editions'),
     modalCloseBtn = document.querySelector('.close-btn'),
     modal = document.querySelector('.modal'),
-	form = modal.querySelector('.form')
+    form = modal.querySelector('.form')
 
   editions.addEventListener('click', (e) => {
     e.preventDefault()
@@ -95,16 +95,52 @@ window.addEventListener('DOMContentLoaded', () => {
   modal.addEventListener('click', (e) => {
     if (e.target.classList.contains('modal_active')) {
       e.target.classList.remove('modal_active')
-	  form.classList.remove('form_active')
-	  document.body.style.overflow = 'auto'
+      form.classList.remove('form_active')
+      document.body.style.overflow = 'auto'
     }
   })
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('modal_active')) {
       modal.classList.remove('modal_active')
-	  form.classList.remove('form_active')
-	  document.body.style.overflow = 'auto'
+      form.classList.remove('form_active')
+      document.body.style.overflow = 'auto'
     }
   })
+
+  //! Editions intersection
+
+  const editionSection = document.querySelector('.editions'),
+    cards = editionSection.querySelectorAll('.card')
+
+  function editionCallback(entries, observer) {
+    const section = entries[0].target
+
+    if (entries[0].isIntersecting) {
+      section.style.transform = 'translateY(0)'
+      section.style.opacity = 1
+      observer.unobserve(section)
+    }
+  }
+
+  const editionObserver = new IntersectionObserver(editionCallback, {
+    threshold: 0.3,
+  })
+  editionObserver.observe(editionSection)
+
+  function cardCallback(entries, observer) {
+
+    if (entries[0].isIntersecting) {
+      entries.forEach((entry) => {
+        entry.target.style.opacity = 1
+        entry.target.style.animationName = 'scale'
+      })
+    }
+  }
+
+  const cardObserver = new IntersectionObserver(cardCallback, {
+    threshold: 0.4,
+  })
+
+  cards.forEach((card) => cardObserver.observe(card))
 })
