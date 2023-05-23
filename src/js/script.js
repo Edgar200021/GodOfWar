@@ -112,7 +112,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const editionSection = document.querySelector('.editions'),
     cards = editionSection.querySelectorAll('.card'),
-	controller = document.querySelector('.controller')
+    controller = document.querySelector('.controller')
 
   function editionCallback(entries, observer) {
     const section = entries[0].target
@@ -130,11 +130,10 @@ window.addEventListener('DOMContentLoaded', () => {
   editionObserver.observe(editionSection)
 
   function cardCallback(entries, observer) {
-
     if (entries[0].isIntersecting) {
       entries.forEach((entry) => {
         entry.target.style.animationPlayState = 'running'
-		observer.unobserve(entry.target)
+        observer.unobserve(entry.target)
       })
     }
   }
@@ -145,27 +144,47 @@ window.addEventListener('DOMContentLoaded', () => {
 
   cards.forEach((card) => cardObserver.observe(card))
 
-
   function controllerCallback(entries, observer) {
-	const section = entries[0].target 
+    const section = entries[0].target
 
-	if (entries[0].isIntersecting) {
-		const info = section.querySelector('.controller__info'),
-			imgBox = section.querySelector('.controller__img-box'),
-			img = imgBox.querySelector('.controller__img')
-	
-		section.style.transform = 'translateY(0)'
-		section.style.opacity = 1
-		info.style.animationPlayState = 'running'
-		imgBox.style.animationPlayState = 'running'
-		img.style.animationPlayState = 'running'
-	
-		observer.unobserve(section)
-	}
+    if (entries[0].isIntersecting) {
+      const info = section.querySelector('.controller__info'),
+        imgBox = section.querySelector('.controller__img-box'),
+        img = imgBox.querySelector('.controller__img')
+
+      section.style.transform = 'translateY(0)'
+      section.style.opacity = 1
+      info.style.animationPlayState = 'running'
+      imgBox.style.animationPlayState = 'running'
+      img.style.animationPlayState = 'running'
+
+      observer.unobserve(section)
+    }
   }
 
-  const controllerObserver = new IntersectionObserver(controllerCallback, {threshold: 0.5})
+  const controllerObserver = new IntersectionObserver(controllerCallback, {
+    threshold: 0.5,
+  })
 
   controllerObserver.observe(controller)
 
+  const videoBtn = document.querySelector('.about__video-btn')
+
+  let isPlayed = false
+
+  function playVideo(event, playBtn) {
+    const parent = event.target.closest('.about__video-box'),
+      video = parent.firstElementChild
+
+    if (!video) return
+
+    isPlayed = !isPlayed
+    isPlayed ? video.play() : video.pause()
+	video.controls = isPlayed ? true : false
+    videoBtn.innerText = isPlayed ? 'Pause' : 'Play'
+  }
+
+  videoBtn.addEventListener('click', (e) => {
+    playVideo(e, videoBtn)
+  })
 })

@@ -1,0 +1,49 @@
+.controller 
+	grid-column: col-start 2 / col-end 9
+	padding: 0 8rem
+	transform: translateY(100px)
+	opacity: 0
+	transition: transform .5s ease, opacity .3s
+	margin-bottom: 13rem
+	&__title 
+		text-align: center
+		margin-bottom: 2.5rem
+	&__inner 
+		display: flex
+		align-items: center 
+		column-gap: 16.5rem
+	&__info 
+		max-width: 42.5rem 
+		width: 100%
+		color: var(--white-color)
+		@include animation(leftToRight, .6s, .3s, backwards, paused)
+	&__descr 
+		@include font(1.8rem, 2.7rem)
+		margin-bottom: 2.1rem
+		&:last-child
+			margin-bottom: 3rem
+	&__action 
+		display: flex
+		justify-content: space-between
+		align-items: center
+	&__price 
+		@include font(3rem, 3.6rem, 700)
+	&__btn 
+		@include btn(var(--secondary-color), var(--secondary-color-darker), var(--secondary-color-darkest))
+	&__img-box 
+		position: relative
+		@include animation(rightToLeft, .6s, .3s, backwards, paused)
+		&::after
+			content: ''
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+			width: 200px
+			height: 120px
+			z-index: -1
+			background: rgba(79, 96, 152, 0.8)
+			filter: blur(75px)
+	&__img 
+		@include animation(infinity, 5s, .6s, both, paused)
+		animation-iteration-count: infinite

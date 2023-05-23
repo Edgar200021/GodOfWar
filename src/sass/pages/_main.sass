@@ -66,59 +66,51 @@
 		grid-column: 1 / -1
 		margin-bottom: 1.4rem
 
-.controller 
-	grid-column: col-start 2 / col-end 9
-	padding: 0 8rem
-	transform: translateY(100px)
-	opacity: 0
-	transition: transform .5s ease, opacity .3s
-	&__title 
-		text-align: center
-		margin-bottom: 2.5rem
-	&__inner 
-		display: flex
-		align-items: center 
-		column-gap: 16.5rem
-	&__info 
-		max-width: 42.5rem 
-		width: 100%
-		color: var(--white-color)
-		@include animation(leftToRight, .6s, .3s, backwards, paused)
-	&__descr 
-		@include font(1.8rem, 2.7rem)
-		margin-bottom: 2.1rem
-		&:last-child
-			margin-bottom: 3rem
-	&__action 
-		display: flex
-		justify-content: space-between
-		align-items: center
-	&__price 
-		@include font(3rem, 3.6rem, 700)
-	&__btn 
-		@include btn(var(--secondary-color), var(--secondary-color-darker), var(--secondary-color-darkest))
-	&__img-box 
-		position: relative
-		@include animation(rightToLeft, .6s, .3s, backwards, paused)
-		&::after
-			content: ''
-			position: absolute
-			top: 50%
-			left: 50%
-			transform: translate(-50%, -50%)
-			width: 200px
-			height: 120px
-			z-index: -1
-			background: rgba(79, 96, 152, 0.8)
-			filter: blur(75px)
-	&__img 
-		@include animation(infinity, 5s, .6s, both, paused)
-		animation-iteration-count: infinite
-
-
 
 .about 
 	grid-column: full-start / full-end
+	margin-bottom: 9rem
+	&__title 
+		position: relative
+		z-index: 2
+		text-align: center
+		margin-bottom: 3rem	
+	&__video-box
+		position: relative
+		width: 100% 
+		height: 100%
+	&__video 
+		position: absolute
+		top: 0
+		left: 0 
+		width: 100%
+		height: auto
+		transition: transform .5s ease 
+		transform: scale(1)
+		opacity: .7
+		&-control 
+			position: absolute 
+			top: 50%
+			left: 50% 
+			transform: translate(-50%, -50%)
+			z-index: 1
+			text-align: center
+			color: var(--white-color)
+		&-title 
+			@include font(5rem, 4rem, 500)
+			margin-bottom: 28px
+		&-btn 
+			display: inline-block
+			padding: .9rem 2.6rem
+			border: none 
+			background-color: #30373F
+			border-radius: 10px
+			cursor: pointer
+			color: inherit
+			transition: all .3s ease
+			@include font(1.6rem, 1.6rem, 500)
+			&:hover 
+				background-color: lighten(#30373F, 10%)
 
 .explore 
 	grid-column: col-start 3 / col-end 8

@@ -644,6 +644,108 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1);
 }
 
+.controller {
+  grid-column: col-start 2/col-end 9;
+  padding: 0 8rem;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.3s;
+  margin-bottom: 13rem;
+}
+.controller__title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.controller__inner {
+  display: flex;
+  align-items: center;
+  column-gap: 16.5rem;
+}
+.controller__info {
+  max-width: 42.5rem;
+  width: 100%;
+  color: var(--white-color);
+  animation-name: leftToRight;
+  animation-duration: 0.6s;
+  animation-delay: 0.3s;
+  animation-fill-mode: backwards;
+  animation-play-state: paused;
+  animation-iteration-count: auto;
+}
+.controller__descr {
+  font-size: 1.8rem;
+  line-height: 2.7rem;
+  font-weight: 400;
+  font-family: "Rubik";
+  margin-bottom: 2.1rem;
+}
+.controller__descr:last-child {
+  margin-bottom: 3rem;
+}
+.controller__action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.controller__price {
+  font-size: 3rem;
+  line-height: 3.6rem;
+  font-weight: 700;
+  font-family: "Rubik";
+}
+.controller__btn {
+  display: inline-block;
+  padding: 1.1rem;
+  min-width: 145px;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  font-weight: 500;
+  font-family: "Rubik";
+  color: var(--white-color);
+  background-color: var(--secondary-color);
+  border-radius: 6px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-transform: uppercase;
+}
+.controller__btn:hover {
+  transform: translateY(-10px);
+  background-color: var(--secondary-color-darker);
+}
+.controller__btn:active {
+  transform: translateY(-7px);
+  background-color: var(--secondary-color-darkest);
+}
+.controller__img-box {
+  position: relative;
+  animation-name: rightToLeft;
+  animation-duration: 0.6s;
+  animation-delay: 0.3s;
+  animation-fill-mode: backwards;
+  animation-play-state: paused;
+  animation-iteration-count: auto;
+}
+.controller__img-box::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 120px;
+  z-index: -1;
+  background: rgba(79, 96, 152, 0.8);
+  filter: blur(75px);
+}
+.controller__img {
+  animation-name: infinity;
+  animation-duration: 5s;
+  animation-delay: 0.6s;
+  animation-fill-mode: both;
+  animation-play-state: paused;
+  animation-iteration-count: auto;
+  animation-iteration-count: infinite;
+}
+
 .container {
   display: grid;
   grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
@@ -1069,109 +1171,63 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1.4rem;
 }
 
-.controller {
-  grid-column: col-start 2/col-end 9;
-  padding: 0 8rem;
-  transform: translateY(100px);
-  opacity: 0;
-  transition: transform 0.5s ease, opacity 0.3s;
+.about {
+  grid-column: full-start/full-end;
+  margin-bottom: 9rem;
 }
-.controller__title {
+.about__title {
+  position: relative;
+  z-index: 2;
   text-align: center;
-  margin-bottom: 2.5rem;
-}
-.controller__inner {
-  display: flex;
-  align-items: center;
-  column-gap: 16.5rem;
-}
-.controller__info {
-  max-width: 42.5rem;
-  width: 100%;
-  color: var(--white-color);
-  animation-name: leftToRight;
-  animation-duration: 0.6s;
-  animation-delay: 0.3s;
-  animation-fill-mode: backwards;
-  animation-play-state: paused;
-  animation-iteration-count: auto;
-}
-.controller__descr {
-  font-size: 1.8rem;
-  line-height: 2.7rem;
-  font-weight: 400;
-  font-family: "Rubik";
-  margin-bottom: 2.1rem;
-}
-.controller__descr:last-child {
   margin-bottom: 3rem;
 }
-.controller__action {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.controller__price {
-  font-size: 3rem;
-  line-height: 3.6rem;
-  font-weight: 700;
-  font-family: "Rubik";
-}
-.controller__btn {
-  display: inline-block;
-  padding: 1.1rem;
-  min-width: 145px;
-  font-size: 1.6rem;
-  line-height: 1.9rem;
-  font-weight: 500;
-  font-family: "Rubik";
-  color: var(--white-color);
-  background-color: var(--secondary-color);
-  border-radius: 6px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  text-transform: uppercase;
-}
-.controller__btn:hover {
-  transform: translateY(-10px);
-  background-color: var(--secondary-color-darker);
-}
-.controller__btn:active {
-  transform: translateY(-7px);
-  background-color: var(--secondary-color-darkest);
-}
-.controller__img-box {
+.about__video-box {
   position: relative;
-  animation-name: rightToLeft;
-  animation-duration: 0.6s;
-  animation-delay: 0.3s;
-  animation-fill-mode: backwards;
-  animation-play-state: paused;
-  animation-iteration-count: auto;
+  width: 100%;
+  height: 100%;
 }
-.controller__img-box::after {
-  content: "";
+.about__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+  transform: scale(1);
+  opacity: 0.7;
+}
+.about__video-control {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200px;
-  height: 120px;
-  z-index: -1;
-  background: rgba(79, 96, 152, 0.8);
-  filter: blur(75px);
+  z-index: 1;
+  text-align: center;
+  color: var(--white-color);
 }
-.controller__img {
-  animation-name: infinity;
-  animation-duration: 5s;
-  animation-delay: 0.6s;
-  animation-fill-mode: both;
-  animation-play-state: paused;
-  animation-iteration-count: auto;
-  animation-iteration-count: infinite;
+.about__video-title {
+  font-size: 5rem;
+  line-height: 4rem;
+  font-weight: 500;
+  font-family: "Rubik";
+  margin-bottom: 28px;
 }
-
-.about {
-  grid-column: full-start/full-end;
+.about__video-btn {
+  display: inline-block;
+  padding: 0.9rem 2.6rem;
+  border: none;
+  background-color: #30373F;
+  border-radius: 10px;
+  cursor: pointer;
+  color: inherit;
+  transition: all 0.3s ease;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  font-weight: 500;
+  font-family: "Rubik";
+}
+.about__video-btn:hover {
+  background-color: #46505c;
 }
 
 .explore {
