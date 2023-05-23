@@ -112,6 +112,7 @@
 
 .explore 
 	grid-column: col-start 3 / col-end 8
+	margin-bottom: 10.5rem
 	&__title 
 		margin-bottom: 3rem 
 		text-align: center
@@ -183,10 +184,38 @@
 
 .news 
 	grid-column: full-start / full-end
+	&__title 
+		text-align: center
+		margin-bottom: 3.1rem
+	&__button.swiper-button--next 
+		
+		
+#swiper-button-prev,#swiper-button-next 
+	display: inline-block
+	width: 32px 
+	height: 32px
+	background-position: center 
+	background-size: 25px 15px
+	background-repeat: no-repeat
+	border: none
+	border-radius: 6px
+	background-color: #8C96A0
+	&::after 
+		content: ''
+
+#swiper-button-prev
+	background-image: url('../assets/icons/arrow-left.svg')
+	left: 40rem
+#swiper-button-next
+	background-image: url('../assets/icons/arrow-right.svg')
+	right: 40rem
 
 .faq 
 	grid-column: col-start 2 / col-end 9
 	padding: 0 8rem
+	&__title 
+		margin-bottom: 3.2rem
+		text-align: center
 
 .footer 
 	grid-column: col-start 2 / col-end 9

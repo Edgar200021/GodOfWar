@@ -1,4 +1,7 @@
+
+
 window.addEventListener('DOMContentLoaded', () => {
+
   //!Hamburger
 
   const hamburgerBtn = document.querySelector('.hamburger'),
@@ -121,7 +124,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     isPlayed = !isPlayed
     isPlayed ? video.play() : video.pause()
-    video.controls = isPlayed ? true : false
+
     playBtn.innerText = isPlayed ? 'Pause' : 'Play'
   }
 
@@ -146,7 +149,25 @@ window.addEventListener('DOMContentLoaded', () => {
 
   explore.addEventListener('click', togglerequirements)
 
+//!  Accordeon
 
+const accordeon = document.querySelector('.accordeon')
+
+accordeon.addEventListener('click', (e) => {
+	const self = e.target
+	if (!self.closest('.accordeon__btn')) return
+
+	const parent = self.closest('.accordeon__action'),
+		actionSpan = parent.querySelector('.action-span'),
+		content = parent.nextElementSibling
+	
+	content.classList.toggle('accordeon__content_active')
+	content.style.maxHeight = content.scrollHeight + 'px'
+	actionSpan.classList.toggle('action-span_active')
+	console.log(self.lastElementChild)
+
+	
+})
 
    //! intersection Observer,
 

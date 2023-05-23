@@ -1,0 +1,52 @@
+.accordeon
+	&__item 
+		color: var(--white-color)
+	&__item:not(:last-child)
+		margin-bottom: 3.2rem
+	&__action 
+		padding-bottom: 1.3rem
+		margin-bottom: 1.3rem
+		border-bottom: 2px solid var(--accent-color)
+	&__btn 
+		display: flex 
+		justify-content: space-between
+		align-items: center
+		width: 100%
+		@include font(1.7rem, 2rem, 700)
+		outline: none
+		border: none
+		background: none
+		span.action-span
+			position: relative
+			width: 30px
+			height: 30px
+			background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #8C96A0
+			border-radius: 6px
+			span 
+				position: absolute 
+				left: 50% 
+				top: 50% 
+				transform: translate(-50%, -50%)
+				display: inline-block
+				background-color: var(--white-color)
+				transition: transform .3s ease
+				&:first-child 
+					width: 10px 
+					height: 2px
+				&:last-child 
+					width: 2px 
+					height: 10px
+			&_active 
+				span
+					transform: translate(-50%, -50%) rotate(45deg)
+			
+
+	
+	&__content
+		max-height: 0
+		overflow: hidden
+		opacity: 0
+		will-change: max-height
+		transition: all .5s 
+		&_active 
+			opacity: 1 
