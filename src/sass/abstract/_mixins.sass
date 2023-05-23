@@ -4,18 +4,20 @@
 	font-weight: $weight 
 	font-family: $family
 
-@mixin animation($name, $duration, $delay, $fill) 
+@mixin animation($name, $duration, $delay, $fill, $play: running, $loop: auto) 
 	animation-name: $name
 	animation-duration: $duration 
 	animation-delay: $delay 
 	animation-fill-mode: $fill
+	animation-play-state: $play
+	animation-iteration-count: $loop
 
 @mixin bg 
 	background-position: center 
 	background-size: cover 
 	background-repeat: no-repeat
 
-@mixin btn($bg: var(--accent-color))
+@mixin btn($bg: var(--accent-color), $bg-darker: var(--accent-color-darker),$bg-darkest:  var(--accent-color-darkest))
 	display: inline-block 
 	padding: 1.1rem 
 	min-width: 145px
@@ -27,10 +29,11 @@
 	text-transform: uppercase
 	&:hover 
 		transform: translateY(-10px)
-		background-color: var(--accent-color-darker)
+		background-color: $bg-darker
 	&:active
 		transform: translateY(-7px)
-		background-color: var(--accent-color-darkest)
+		background-color: $bg-darkest
+	
 
 @mixin respond($breakpoint)
 	

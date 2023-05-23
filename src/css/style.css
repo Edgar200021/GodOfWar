@@ -308,12 +308,18 @@ template {
 }
 
 :root {
-  --color: 263;
+  --color-accent: 263;
   --h: 63%;
   --l: 59%;
-  --accent-color: hsl(var(--color), var(--h), var(--l));
-  --accent-color-darker: hsl(var(--color), var(--h), calc(var(--l) - 10%));
-  --accent-color-darkest: hsl(var(--color), var(--h), calc(var(--l) - 30%));
+  --accent-color: hsl(var(--color-accent), var(--h), var(--l));
+  --accent-color-darker: hsl(var(--color-accent), var(--h), calc(var(--l) - 10%));
+  --accent-color-darkest: hsl(var(--color-accent), var(--h), calc(var(--l) - 30%));
+  --color-secondary: 3;
+  --h-s: 100%;
+  --l-s: 61%;
+  --secondary-color: hsl(var(--color-secondary), var(--h-s), var(--l-s));
+  --secondary-color-darker: hsl(var(--color-secondary), var(--h-s), calc(var(--l-s) - 10%));
+  --secondary-color-darkest: hsl(var(--color-secondary), var(--h-s), calc(var(--l-s) - 30%));
   --secondary-color: #FF4136;
   --text-color: #A9C7C7;
   --text-second-color: #8C96A0;
@@ -454,6 +460,8 @@ h1, h2, h3, h4, h5, h6 {
   animation-duration: 2s;
   animation-delay: 0.4s;
   animation-fill-mode: backwards;
+  animation-play-state: running;
+  animation-iteration-count: auto;
 }
 .hamburger_active span {
   width: 150%;
@@ -548,10 +556,13 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1.6rem;
   border-radius: 6px;
   background-color: #191D1E;
-  opacity: 0;
+  animation-name: scale;
   animation-duration: 0.5s;
   animation-delay: 0.2s;
   animation-fill-mode: backwards;
+  animation-play-state: paused;
+  animation-iteration-count: auto;
+  animation-play-state: paused;
 }
 .card:nth-child(3) {
   animation-delay: 0.5s;
@@ -880,10 +891,20 @@ h1, h2, h3, h4, h5, h6 {
   animation-duration: 0.1s;
   animation-delay: 0.1s;
   animation-fill-mode: backwards;
+  animation-play-state: running;
+  animation-iteration-count: auto;
 }
 
 .none {
   display: none;
+}
+
+.accent {
+  color: var(--accent-color);
+}
+
+.secondary {
+  color: var(--secondary-color);
 }
 
 @keyframes opacity {
@@ -910,6 +931,16 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(0);
   }
 }
+@keyframes rightToLeft {
+  from {
+    opacity: 0;
+    transform: translateX(150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 @keyframes scale {
   from {
     opacity: 0;
@@ -926,6 +957,20 @@ h1, h2, h3, h4, h5, h6 {
   }
   to {
     transform: translateX(500%);
+  }
+}
+@keyframes infinity {
+  25% {
+    transform: translateY(25px);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+  75% {
+    transform: translateY(-25px);
+  }
+  75% {
+    transform: translateY(25px);
   }
 }
 .wrapper {
@@ -945,6 +990,8 @@ h1, h2, h3, h4, h5, h6 {
   animation-duration: 10s;
   animation-delay: 1.2s;
   animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-iteration-count: auto;
   z-index: 1;
 }
 .wrapper::after, .wrapper::before {
@@ -986,6 +1033,8 @@ h1, h2, h3, h4, h5, h6 {
   animation-duration: 2s;
   animation-delay: 0.4s;
   animation-fill-mode: backwards;
+  animation-play-state: running;
+  animation-iteration-count: auto;
   animation-name: leftToRight;
   animation-duration: 2s;
   animation-delay: 0.4s;
@@ -1012,6 +1061,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(100px);
   opacity: 0;
   transition: transform 0.5s ease, opacity 0.3s;
+  margin-bottom: 5.5rem;
 }
 .editions__title {
   text-align: center;
@@ -1022,6 +1072,102 @@ h1, h2, h3, h4, h5, h6 {
 .controller {
   grid-column: col-start 2/col-end 9;
   padding: 0 8rem;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.3s;
+}
+.controller__title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.controller__inner {
+  display: flex;
+  align-items: center;
+  column-gap: 16.5rem;
+}
+.controller__info {
+  max-width: 42.5rem;
+  width: 100%;
+  color: var(--white-color);
+  animation-name: leftToRight;
+  animation-duration: 0.6s;
+  animation-delay: 0.3s;
+  animation-fill-mode: backwards;
+  animation-play-state: paused;
+  animation-iteration-count: auto;
+}
+.controller__descr {
+  font-size: 1.8rem;
+  line-height: 2.7rem;
+  font-weight: 400;
+  font-family: "Rubik";
+  margin-bottom: 2.1rem;
+}
+.controller__descr:last-child {
+  margin-bottom: 3rem;
+}
+.controller__action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.controller__price {
+  font-size: 3rem;
+  line-height: 3.6rem;
+  font-weight: 700;
+  font-family: "Rubik";
+}
+.controller__btn {
+  display: inline-block;
+  padding: 1.1rem;
+  min-width: 145px;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  font-weight: 500;
+  font-family: "Rubik";
+  color: var(--white-color);
+  background-color: var(--secondary-color);
+  border-radius: 6px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-transform: uppercase;
+}
+.controller__btn:hover {
+  transform: translateY(-10px);
+  background-color: var(--secondary-color-darker);
+}
+.controller__btn:active {
+  transform: translateY(-7px);
+  background-color: var(--secondary-color-darkest);
+}
+.controller__img-box {
+  position: relative;
+  animation-name: rightToLeft;
+  animation-duration: 0.6s;
+  animation-delay: 0.3s;
+  animation-fill-mode: backwards;
+  animation-play-state: paused;
+  animation-iteration-count: auto;
+}
+.controller__img-box::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 120px;
+  z-index: -1;
+  background: rgba(79, 96, 152, 0.8);
+  filter: blur(75px);
+}
+.controller__img {
+  animation-name: infinity;
+  animation-duration: 5s;
+  animation-delay: 0.6s;
+  animation-fill-mode: both;
+  animation-play-state: paused;
+  animation-iteration-count: auto;
+  animation-iteration-count: infinite;
 }
 
 .about {

@@ -6,10 +6,8 @@
 	padding: 1.6rem 
 	border-radius: 6px
 	background-color: #191D1E
-	opacity: 0
-	animation-duration: .5s 
-	animation-delay: .2s
-	animation-fill-mode: backwards
+	@include animation(scale, .5s, .2s, backwards, paused)
+	animation-play-state: paused
 	&:nth-child(3)
 		animation-delay: .5s
 	&:nth-child(4)

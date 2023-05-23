@@ -108,10 +108,11 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-  //! Editions intersection
+  //! intersection Observer,
 
   const editionSection = document.querySelector('.editions'),
-    cards = editionSection.querySelectorAll('.card')
+    cards = editionSection.querySelectorAll('.card'),
+	controller = document.querySelector('.controller')
 
   function editionCallback(entries, observer) {
     const section = entries[0].target
@@ -132,15 +133,39 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if (entries[0].isIntersecting) {
       entries.forEach((entry) => {
-        entry.target.style.opacity = 1
-        entry.target.style.animationName = 'scale'
+        entry.target.style.animationPlayState = 'running'
+		observer.unobserve(entry.target)
       })
     }
   }
 
   const cardObserver = new IntersectionObserver(cardCallback, {
-    threshold: 0.4,
+    threshold: 0.2,
   })
 
   cards.forEach((card) => cardObserver.observe(card))
+
+
+  function controllerCallback(entries, observer) {
+	const section = entries[0].target 
+
+	if (entries[0].isIntersecting) {
+		const info = section.querySelector('.controller__info'),
+			imgBox = section.querySelector('.controller__img-box'),
+			img = imgBox.querySelector('.controller__img')
+	
+		section.style.transform = 'translateY(0)'
+		section.style.opacity = 1
+		info.style.animationPlayState = 'running'
+		imgBox.style.animationPlayState = 'running'
+		img.style.animationPlayState = 'running'
+	
+		observer.unobserve(section)
+	}
+  }
+
+  const controllerObserver = new IntersectionObserver(controllerCallback, {threshold: 0.5})
+
+  controllerObserver.observe(controller)
+
 })
