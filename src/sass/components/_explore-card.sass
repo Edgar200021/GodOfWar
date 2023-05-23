@@ -1,0 +1,51 @@
+.explore__box:nth-child(odd) .explore-card .explore-card__img-box
+	order: 1
+	@include animation(rightToLeft, .7s, .3s, backwards, paused)
+
+.explore__box:nth-child(odd) .explore-card .explore-card__info 
+	@include animation(leftToRight, .7s, .3s, backwards, paused)
+
+.explore-card
+	overflow: hidden
+	display: grid 
+	grid-template-columns: repeat(2, 1fr)
+	align-items: center
+	justify-content: center
+	gap: 5rem
+	&__img-box
+		text-align: center
+		background-size: 300px 300px
+		background-repeat: no-repeat
+		background-position: center
+		position: relative
+		@include animation(leftToRight, .7s, .3s, backwards, paused)
+		img 
+			min-width: 27rem
+			max-width: 41rem
+			width: auto
+		&::after
+			content: ''
+			position: absolute 
+			z-index: -1
+			bottom: 10%
+			left: 40%
+			transform: translateX(-50%)
+			width: 61px
+			height: 80px
+			background: rgba(255, 65, 54, 0.8)
+			filter: blur(30px)
+			transform: matrix(-0.03, -1, 1, -0.03, 0, 0)
+	&__info 
+		@include font(1.4rem, 3.6rem)
+		overflow: hidden
+		@include animation(rightToLeft, .7s, .3s, backwards, paused)
+		&-list
+			margin-bottom: 3rem
+			visibility: hidden
+			opacity: 0
+			height: 0
+			transition: visibility 0s, opacity 0.5s linear
+			> li span
+				margin-right: .4rem
+	&__btn 
+		@include btn(var(--secondary-color), var(--secondary-color-darker), var(--secondary-color-darkest))
