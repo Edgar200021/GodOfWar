@@ -1,0 +1,29 @@
+.slider
+	display: flex 
+	column-gap: 2rem
+	overflow: hidden
+	&-wrapper
+		position: relative
+	&__btn 
+		position: absolute
+		display: inline-block 
+		width: 32px 
+		height: 32px 
+		background: #8C96A0
+		border-radius: 6px
+		@include bg
+		background-size: 16px 15px
+		transition: transform .3s ease
+		border: none
+		&:hover 
+			transform: scale(1.1)
+		&_prev 
+			left: 28rem 
+			top: 13.5rem
+			background-image: url('../assets/icons/arrow-left.svg')
+		&_next 
+			right: 28rem 
+			top: 13.5rem
+			background-image: url('../assets/icons/arrow-right.svg')
+
+		

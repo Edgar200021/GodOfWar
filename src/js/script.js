@@ -1,7 +1,4 @@
-
-
 window.addEventListener('DOMContentLoaded', () => {
-
   //!Hamburger
 
   const hamburgerBtn = document.querySelector('.hamburger'),
@@ -111,7 +108,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-
+  //! Video
   const videoBtn = document.querySelector('.about__video-btn')
 
   let isPlayed = false
@@ -143,115 +140,149 @@ window.addEventListener('DOMContentLoaded', () => {
 
       list[0].classList.toggle('visible')
       list[1].classList.toggle('visible')
-
     }
   }
 
   explore.addEventListener('click', togglerequirements)
 
-//!  Accordeon
+  //! Slider
+  const slides = document.querySelectorAll('.slide'),
+    prevBtn = document.querySelector('.slider__btn_prev'),
+    nextBtn = document.querySelector('.slider__btn_next')
 
-const accordeon = document.querySelector('.accordeon')
+  let currentSlide = 1,
+    maxSlide = slides.length
 
-accordeon.addEventListener('click', (e) => {
-	const self = e.target
-	if (!self.closest('.accordeon__btn')) return
+  function goToSlide(slide) {
+    slides.forEach((item) => {
+      item.style.transform = `translateX(-${slide * 70}%)`
+    })
+  }
 
-	const parent = self.closest('.accordeon__action'),
-		actionSpan = parent.querySelector('.action-span'),
-		content = parent.nextElementSibling
-	
-	content.classList.toggle('accordeon__content_active')
-	content.style.maxHeight = content.scrollHeight + 'px'
-	actionSpan.classList.toggle('action-span_active')
-	console.log(self.lastElementChild)
-
-	
-})
-
-   //! intersection Observer,
-
-   const editionSection = document.querySelector('.editions'),
-   cards = editionSection.querySelectorAll('.card'),
-   controller = document.querySelector('.controller')
-
- function editionCallback(entries, observer) {
-   const section = entries[0].target
-
-   if (entries[0].isIntersecting) {
-	 section.style.transform = 'translateY(0)'
-	 section.style.opacity = 1
-	 observer.unobserve(section)
-   }
- }
-
- const editionObserver = new IntersectionObserver(editionCallback, {
-   threshold: 0.3,
- })
- editionObserver.observe(editionSection)
-
- function cardCallback(entries, observer) {
-   if (entries[0].isIntersecting) {
-	 entries.forEach((entry) => {
-	   entry.target.style.animationPlayState = 'running'
-	   observer.unobserve(entry.target)
-	 })
-   }
- }
-
- const cardObserver = new IntersectionObserver(cardCallback, {
-   threshold: 0.2,
- })
-
- cards.forEach((card) => cardObserver.observe(card))
-
- function controllerCallback(entries, observer) {
-   const section = entries[0].target
-
-   if (entries[0].isIntersecting) {
-	 const info = section.querySelector('.controller__info'),
-	   imgBox = section.querySelector('.controller__img-box'),
-	   img = imgBox.querySelector('.controller__img')
-
-	 section.style.transform = 'translateY(0)'
-	 section.style.opacity = 1
-	 info.style.animationPlayState = 'running'
-	 imgBox.style.animationPlayState = 'running'
-	 img.style.animationPlayState = 'running'
-
-	 observer.unobserve(section)
-   }
- }
-
- const controllerObserver = new IntersectionObserver(controllerCallback, {
-   threshold: 0.5,
- })
-
- controllerObserver.observe(controller)
+  goToSlide(currentSlide)
 
 
- const exploreBox = document.querySelectorAll('.explore__box')
-
- function exploreCallback (entries, observer) {
-	const section = entries[0].target,
-		img = section.querySelector('.explore-card__img-box'),
-		info = section.querySelector('.explore-card__info'),
-		animatedBox = section.querySelector('.explore__animated-box')
-
-	if (entries[0].isIntersecting) {
-		img.style.animationPlayState = 'running'
-		info.style.animationPlayState = 'running'
-		animatedBox.style.animationPlayState = 'running'
-		observer.unobserve(section)
-		
+  function nextSlide() {
+	if (currentSlide === maxSlide - 1) {
+		currentSlide = 0
+	} else {
+		currentSlide++
 	}
- }
 
- const exploreObserver = new IntersectionObserver(exploreCallback, {threshold: .7})
+	goToSlide(currentSlide)
+  }
 
-exploreBox.forEach(explore => {
-	exploreObserver.observe(explore)
-})
+  function prevSlide() {
+	if (currentSlide === 0) {
+		currentSlide = maxSlide - 1
+	} else {
+		currentSlide--
+	}
 
+	goToSlide(currentSlide)
+  }
 
+  nextBtn.addEventListener('click', nextSlide)
+  prevBtn.addEventListener('click', prevSlide)
+  //!  Accordeon
+
+  const accordeon = document.querySelector('.accordeon')
+
+  accordeon.addEventListener('click', (e) => {
+    const self = e.target
+    if (!self.closest('.accordeon__btn')) return
+
+    const parent = self.closest('.accordeon__action'),
+      actionSpan = parent.querySelector('.action-span'),
+      content = parent.nextElementSibling
+
+    content.classList.toggle('accordeon__content_active')
+    content.style.maxHeight = content.scrollHeight + 'px'
+    actionSpan.classList.toggle('action-span_active')
+    console.log(self.lastElementChild)
+  })
+
+  //! intersection Observer,
+
+  const editionSection = document.querySelector('.editions'),
+    cards = editionSection.querySelectorAll('.card'),
+    controller = document.querySelector('.controller')
+
+  function editionCallback(entries, observer) {
+    const section = entries[0].target
+
+    if (entries[0].isIntersecting) {
+      section.style.transform = 'translateY(0)'
+      section.style.opacity = 1
+      observer.unobserve(section)
+    }
+  }
+
+  const editionObserver = new IntersectionObserver(editionCallback, {
+    threshold: 0.3,
+  })
+  editionObserver.observe(editionSection)
+
+  function cardCallback(entries, observer) {
+    if (entries[0].isIntersecting) {
+      entries.forEach((entry) => {
+        entry.target.style.animationPlayState = 'running'
+        observer.unobserve(entry.target)
+      })
+    }
+  }
+
+  const cardObserver = new IntersectionObserver(cardCallback, {
+    threshold: 0.2,
+  })
+
+  cards.forEach((card) => cardObserver.observe(card))
+
+  function controllerCallback(entries, observer) {
+    const section = entries[0].target
+
+    if (entries[0].isIntersecting) {
+      const info = section.querySelector('.controller__info'),
+        imgBox = section.querySelector('.controller__img-box'),
+        img = imgBox.querySelector('.controller__img')
+
+      section.style.transform = 'translateY(0)'
+      section.style.opacity = 1
+      info.style.animationPlayState = 'running'
+      imgBox.style.animationPlayState = 'running'
+      img.style.animationPlayState = 'running'
+
+      observer.unobserve(section)
+    }
+  }
+
+  const controllerObserver = new IntersectionObserver(controllerCallback, {
+    threshold: 0.5,
+  })
+
+  controllerObserver.observe(controller)
+
+  const exploreBox = document.querySelectorAll('.explore__box')
+
+  function exploreCallback(entries, observer) {
+    const section = entries[0].target,
+      img = section.querySelector('.explore-card__img-box'),
+      info = section.querySelector('.explore-card__info'),
+      animatedBox = section.querySelector('.explore__animated-box')
+
+    if (entries[0].isIntersecting) {
+      img.style.animationPlayState = 'running'
+      info.style.animationPlayState = 'running'
+      animatedBox.style.animationPlayState = 'running'
+      observer.unobserve(section)
+    }
+  }
+
+  const exploreObserver = new IntersectionObserver(exploreCallback, {
+    threshold: 0.7,
+  })
+
+  exploreBox.forEach((explore) => {
+    exploreObserver.observe(explore)
+  })
 })
