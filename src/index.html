@@ -41,38 +41,34 @@
         <span class="animated-span"></span>
         <div class="wrapper__inner">
           <header class="header">
-            <button class="hamburger">
-              <span class="hamburger__line"></span>
-            </button>
+            <div class="header__menu-box menu__box">
+              <button class="hamburger">
+                <span class="hamburger__line"></span>
+              </button>
 
-            <nav class="header__menu menu hide">
-              <ul class="menu__list">
-                <li class="menu__item">
-                  <a href="" class="menu__link">editions </a>
-                </li>
-                <li class="menu__item">
-                  <a href="" class="menu__link">controller</a>
-                </li>
-                <li class="menu__item">
-                  <a href="" class="menu__link">ABOUT GAME</a>
-                </li>
-                <li class="menu__item">
-                  <a href="" class="menu__link">Explore</a>
-                </li>
-                <li class="menu__item">
-                  <a href="" class="menu__link">news</a>
-                </li>
-                <li class="menu__item">
-                  <a href="" class="menu__link">FAQ</a>
-                </li>
-                <li class="menu__item">
-                  <select id="languages">
-                    <option value="english" id="english">english</option>
-                    <option value="russian" id="russian">russian</option>
-                  </select>
-                </li>
-              </ul>
-            </nav>
+              <nav class="header__menu menu hide">
+                <ul class="menu__list">
+                  <li class="menu__item">
+                    <a href="#editions" class="menu__link">editions </a>
+                  </li>
+                  <li class="menu__item">
+                    <a href="#controller" class="menu__link">controller</a>
+                  </li>
+                  <li class="menu__item">
+                    <a href="#about" class="menu__link">ABOUT GAME</a>
+                  </li>
+                  <li class="menu__item">
+                    <a href="#explore" class="menu__link">Explore</a>
+                  </li>
+                  <li class="menu__item">
+                    <a href="#news" class="menu__link">news</a>
+                  </li>
+                  <li class="menu__item">
+                    <a href="#faq" class="menu__link">FAQ</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
 
             <div class="header__timer timer">
               <span class="timer__descr">Realease:</span>
@@ -109,7 +105,7 @@
           </section>
         </div>
       </div>
-      <section class="editions">
+      <section id="editions" class="editions">
         <h2 class="editions__title second-title">Editions</h2>
 
         <div class="editions__item card">
@@ -164,13 +160,13 @@
           <button class="card__btn btn">buy NOW</button>
         </div>
       </section>
-      <section class="controller">
+      <section id="controller" class="controller">
         <h2 class="controller__title second-title">DualSense</h2>
         <div class="controller__inner">
           <div class="controller__info">
             <p class="controller__descr">
               You can also buy an exclusive controller with the
-              <span class="accent">God of War Ragnarok t</span>heme for PS5
+              <span class="accent">God of War Ragnarok </span>theme for PS5
             </p>
             <p class="controller__descr">
               If you purchase a controller and a game (any edition), you will
@@ -193,7 +189,7 @@
           </div>
         </div>
       </section>
-      <section class="about">
+      <section id="about" class="about">
         <h2 class="about__title second-title">About Game</h2>
         <div class="about__video-box">
           <video class="about__video video" poster="./assets/video/poster.jpg">
@@ -206,7 +202,7 @@
           </div>
         </div>
       </section>
-      <section class="explore">
+      <section id="explore" class="explore">
         <h2 class="explore__title second-title">
           Explore the God of War series
         </h2>
@@ -351,7 +347,7 @@
           </div>
         </div>
       </section>
-      <section class="news">
+      <section id="news" class="news">
         <h2 class="news__title second-title">News</h2>
 
         <div class="slider-wrapper">
@@ -564,7 +560,7 @@
           <button class="slider__btn slider__btn_next"></button>
         </div>
       </section>
-      <section class="faq">
+      <section id="faq" class="faq">
         <h2 class="faq__title second-title">FAQ</h2>
         <div class="accordeon">
           <div class="accordeon__item">
@@ -601,22 +597,22 @@
         <div class="footer__top">
           <ul class="footer__menu-list menu__list">
             <li class="menu__item">
-              <a href="" class="menu__link">editions </a>
+              <a href="#editions" class="menu__link">editions </a>
             </li>
             <li class="menu__item">
-              <a href="" class="menu__link">controller</a>
+              <a href="#controller" class="menu__link">controller</a>
             </li>
             <li class="menu__item">
-              <a href="" class="menu__link">ABOUT GAME</a>
+              <a href="#about" class="menu__link">ABOUT GAME</a>
             </li>
             <li class="menu__item">
-              <a href="" class="menu__link">Explore</a>
+              <a href="#explore" class="menu__link">Explore</a>
             </li>
             <li class="menu__item">
-              <a href="" class="menu__link">news</a>
+              <a href="#news" class="menu__link">news</a>
             </li>
             <li class="menu__item">
-              <a href="" class="menu__link">FAQ</a>
+              <a href="#faq" class="menu__link">FAQ</a>
             </li>
             <li class="menu__item"><span> language: </span>english</li>
           </ul>
@@ -636,8 +632,7 @@
               src="./assets/img/footer/footer-logo.png"
               alt="Footer logo"
               class="footer__logo"
-            /></a
-          >
+          /></a>
 
           <span class="footer__date">2022</span>
           <p class="footer__bottom-descr">
@@ -663,7 +658,7 @@
           <input
             class="form__input"
             type="number"
-            name="credit"
+            name="creditCard"
             id="credit"
             placeholder="0000 0000 0000 0000"
           />
@@ -683,7 +678,7 @@
           <input
             class="form__input"
             type="password"
-            name="cv"
+            name="ccv"
             id="cv"
             placeholder="***"
           />
@@ -693,7 +688,7 @@
           <input
             class="form__input"
             type="text"
-            name="instant"
+            name="fullName"
             id="instant"
             placeholder="John Doe"
           />

@@ -1,32 +1,33 @@
 .menu 
 	transition: all .3s ease
+	&__box 
+		display: flex
+		align-items: center
+		column-gap: 3rem
+		@include respond(tablet)
+			flex-direction: column
+			align-items: start
+			gap: 3rem 0
 	&__list 
 		display: flex
 		align-items: center
 		gap: 3rem
+		@include respond(tablet)
+			align-items: start
+			flex-direction: column
+			gap: 1rem 0
+		@include respond(mini-tablet)
+			column-gap: 1rem
 	&__item 
 		color: var(--white-color)
 		opacity: 0.5
 		text-transform: uppercase 
-		&:last-child
-			opacity: 1
-		select 
-			border: none
-			background: none
-			color: inherit
-			@include font(1.4rem, 2.7rem)
-			text-transform: inherit
-			outline: none
-			cursor: pointer
-			option
-				border: none
-				background: rgba(0, 0, 0, 1)
-				color: #fff
-				text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)
 	&__link 
 		display: inline-block
 		@include font(1.4rem, 2.7rem)
 		transition: color .3s ease, transform .3s ease
+		@include respond(mini-tablet)
+			@include font(1.7rem, 2.7rem)
 		&:hover 
 			color: var(--accent-color)
 			transform: scale(1.1)

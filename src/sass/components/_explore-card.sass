@@ -12,6 +12,8 @@
 	align-items: center
 	justify-content: center
 	gap: 5rem
+	@include respond(mini-tablet)
+		grid-template-columns: 1fr
 	&__img-box
 		text-align: center
 		background-size: 300px 300px
@@ -19,10 +21,16 @@
 		background-position: center
 		position: relative
 		@include animation(leftToRight, .7s, .3s, backwards, paused)
+		@include respond(mini-tablet)
+			order: 1
 		img 
 			min-width: 27rem
 			max-width: 41rem
 			width: auto
+			@include respond(tablet)
+				max-width: 30rem
+			@include respond(phone)
+				max-width: 20rem
 		&::after
 			content: ''
 			position: absolute 
@@ -39,6 +47,9 @@
 		@include font(1.4rem, 3.6rem)
 		overflow: hidden
 		@include animation(rightToLeft, .7s, .3s, backwards, paused)
+		@include respond(mini-tablet)
+			text-align: center
+			@include font(2.5rem, 3.6rem)
 		&-list
 			margin-bottom: 3rem
 			visibility: hidden
@@ -47,5 +58,7 @@
 			transition: visibility 0s, opacity 0.5s linear
 			> li span
 				margin-right: .4rem
+			@include respond(mini-tablet)
+				text-align: start
 	&__btn 
 		@include btn(var(--secondary-color), var(--secondary-color-darker), var(--secondary-color-darkest))

@@ -1,3 +1,4 @@
+
 .wrapper 
 	position: relative
 	overflow: hidden
@@ -12,6 +13,10 @@
 		background-color: var(--bg-color)
 		@include animation(animate, 10s, 1.2s, forwards)
 		z-index: 1
+		@include respond(tablet) 
+			width: 100vw
+	@include respond(tablet)
+		margin-bottom: 7rem
 	&::after,&::before
 		content: ''
 		position: absolute 
@@ -21,6 +26,8 @@
 		display: block 
 		width: 70vw
 		height: 100% 
+		@include respond(mini-tablet) 
+			width: 100vw
 	&::before 
 		background: linear-gradient(89.79deg, #1C2023 0.2%, rgba(28, 32, 35, 0) 41.42%), url('../assets/img/promo-bg.jpg')
 		@include bg 
@@ -49,6 +56,11 @@
 		@include font(1.8rem, 2.7rem)
 		color: var(--text-second-color)
 		margin-bottom: 5rem
+		@include respond(desktop) 
+			@include font(2.6rem, 2.7rem)
+		@include respond(phone) 
+			@include font(3.5rem, 3.5rem)
+	
 
 .editions
 	grid-column: col-start 2 / col-end 9
@@ -61,6 +73,7 @@
 	opacity: 0
 	transition: transform .5s ease, opacity .3s
 	margin-bottom: 5.5rem
+	scroll-margin-top: 12rem
 	&__title 
 		text-align: center
 		grid-column: 1 / -1
@@ -71,15 +84,21 @@
 	grid-column: full-start / full-end
 	margin-bottom: 9rem
 	overflow: hidden
+	transform: translateY(100px)
+	opacity: 0
+	transition: transform .3s ease, opacity .3s ease
 	&__title 
 		position: relative
 		z-index: 2
 		text-align: center
 		margin-bottom: 3rem	
+		@include respond(mini-tablet)
+			margin-bottom: 6rem
 	&__video-box
 		position: relative
 		width: 100% 
 		height: 100%
+		@include animation(leftToRight, 1.2s, .8s, backwards, paused)
 	&__video 
 		width: 100%
 		height: auto
@@ -94,9 +113,17 @@
 			z-index: 1
 			text-align: center
 			color: var(--white-color)
+			transition: opacity .3s ease
+			&:hover 
+				opacity: 1
+			@include respond(mini-tablet)
+				top: 30% 
 		&-title 
 			@include font(5rem, 4rem, 500)
 			margin-bottom: 28px
+			@include respond(mini-tablet)
+				@include font(3rem, 4rem, 500)
+				margin-bottom: 5px
 		&-btn 
 			display: inline-block
 			padding: .9rem 2.6rem
@@ -113,6 +140,7 @@
 .explore 
 	grid-column: col-start 3 / col-end 8
 	margin-bottom: 10.5rem
+	scroll-margin-top: 9rem
 	&__title 
 		margin-bottom: 3rem 
 		text-align: center
@@ -126,11 +154,18 @@
 		@include font(1.8rem, 2.1rem, 500)
 		text-align: center
 		margin-bottom: 2rem
+		@include respond(mini-tablet)
+			@include font(3rem, 3rem)
+			margin-bottom: 4rem
 	&__control 
+		user-select: none
 		max-width: 50% 
 		margin: 0 auto
 		text-align: center
 		margin-bottom: 2.2rem
+		@include respond(mini-tablet)
+			max-width: 80%
+			width: 100%
 		> * 
 			display: inline-block
 			vertical-align: middle
@@ -141,6 +176,10 @@
 			@include font(1.4rem, 1.7rem)	
 			&.active 
 				color: white !important
+			@include respond(mini-tablet)
+				@include font(2.5rem, 1.7rem)
+			//@include respond(phone)
+			//	@include font(2.2rem, 1.7rem)
 	&__toggle  
 		width: 55px 
 		height: 25px 
@@ -181,22 +220,27 @@
 				background-color: var(--accent-color)
 				transition: all .3s ease
 
-
 .news 
 	grid-column: full-start / full-end
 	margin-bottom: 11rem
+	transform: translateY(100px)
+	opacity: 0
+	transition: transform 1s ease-in-out, opacity 1.5s ease-in-out
+	scroll-margin-top: 15rem
 	&__title 
 		text-align: center
 		margin-bottom: 3.1rem
 	
-
 .faq 
 	grid-column: col-start 2 / col-end 9
 	padding: 0 8rem
 	margin-bottom: 15.5rem
+	@include respond(mini-tablet)
+		padding: 0 4rem
 	&__title 
 		margin-bottom: 3.2rem
 		text-align: center
+		@include animation(leftToRight, 1.3s, .2s, backwards, paused)
 
 
 

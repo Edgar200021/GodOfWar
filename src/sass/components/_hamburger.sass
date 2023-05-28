@@ -6,6 +6,8 @@
 	background: none 
 	border: none
 	@include animation(leftToRight, 2s, .4s, backwards)
+	@include respond(tablet)
+		transform: translateY(1.5rem)
 	&_active
 		span 
 			width: 150%

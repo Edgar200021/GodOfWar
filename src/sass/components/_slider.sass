@@ -22,9 +22,11 @@
 			left: 28rem 
 			top: 13.5rem
 			background-image: url('../assets/icons/arrow-left.svg')
+			@include respond(tablet)
+				left: 10rem
 		&_next 
 			right: 28rem 
 			top: 13.5rem
 			background-image: url('../assets/icons/arrow-right.svg')
-
-		
+			@include respond(tablet)
+				right: 10rem

@@ -4,6 +4,25 @@
 	font-weight: $weight 
 	font-family: $family
 
+
+@mixin respond($breakpoint)
+	@if $breakpoint == phone
+		@media (max-width: 420px)
+			@content
+	
+	@if $breakpoint == mini-tablet
+		@media (max-width: 601px)
+			@content
+
+	@if $breakpoint == tablet
+		@media (max-width: 920px)
+			@content
+
+	@if $breakpoint == desktop
+		@media (max-width: 1135px)
+			@content
+
+
 @mixin animation($name, $duration, $delay, $fill, $play: running, $loop: auto) 
 	animation-name: $name
 	animation-duration: $duration 
@@ -24,9 +43,12 @@
 	@include font(1.6rem, 1.9rem, 500)
 	color: var(--white-color)
 	background-color: $bg
+	border: none
 	border-radius: 6px
 	transition: transform .3s ease, background-color .3s ease
 	text-transform: uppercase
+	@include respond(phone)
+		@include font(2.2rem, 2rem, 500)
 	&:hover 
 		transform: translateY(-10px)
 		background-color: $bg-darker
@@ -35,6 +57,5 @@
 		background-color: $bg-darkest
 	
 
-@mixin respond($breakpoint)
 	
 

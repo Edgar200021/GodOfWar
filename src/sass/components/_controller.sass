@@ -5,15 +5,35 @@
 	opacity: 0
 	transition: transform .5s ease, opacity .3s
 	margin-bottom: 13rem
+	scroll-margin-top: 40rem
+	@include respond(mini-tablet)
+		padding: 0 4rem
+	@include respond(phone)
+		padding: 0
+	&__img 
+		max-width: fit-content
+		width: auto
+		@include respond(mini-tablet)
+			max-width: 35rem 
+			width: 100%
+		@include respond(phone)
+			max-width: 30rem 
+			width: 100%
 	&__title 
 		text-align: center
 		margin-bottom: 2.5rem
+		@include respond(mini-tablet)
+			margin-bottom: 5rem
 	&__inner 
 		display: flex
 		align-items: center 
 		column-gap: 16.5rem
+		@include respond(tablet)
+			flex-direction: column
+			gap: 5rem 0
 	&__info 
-		max-width: 42.5rem 
+		min-width: 42.5rem 
+		max-width: 43rem
 		width: 100%
 		color: var(--white-color)
 		@include animation(leftToRight, .6s, .3s, backwards, paused)
@@ -22,14 +42,21 @@
 		margin-bottom: 2.1rem
 		&:last-child
 			margin-bottom: 3rem
+		@include respond(desktop)
+			@include font(2.2rem, 2.7rem)
+		@include respond(phone)
+			@include font(2.5rem, 3rem)
 	&__action 
 		display: flex
 		justify-content: space-between
 		align-items: center
+		gap: 2rem
 	&__price 
 		@include font(3rem, 3.6rem, 700)
 	&__btn 
 		@include btn(var(--secondary-color), var(--secondary-color-darker), var(--secondary-color-darkest))
+		@include respond(phone)
+			@include font(1.8rem, 3rem)
 	&__img-box 
 		position: relative
 		@include animation(rightToLeft, .6s, .3s, backwards, paused)

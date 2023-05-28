@@ -1,10 +1,17 @@
 .header 
 	display: flex 
-	justify-content: start 
+	justify-content: space-between
 	align-items: center
 	column-gap: 5rem 
 	padding-top: 3rem
 	margin-bottom:20.3rem
+	@include respond(tablet)
+		margin-bottom: 5rem
+		align-items: start
+	@include respond(mini-tablet)
 	&__timer 
 		margin-left: auto
+		@include respond(tablet)
+		margin-left: 0
+
 		

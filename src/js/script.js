@@ -10,6 +10,24 @@ window.addEventListener('DOMContentLoaded', () => {
     menu.classList.toggle('show')
   })
 
+  //! Scroll
+
+  const linkMenu = document.querySelectorAll('.menu__list')
+
+  linkMenu.forEach((menu) => {
+    menu.addEventListener('click', (e) => {
+      e.preventDefault()
+      const btn = e.target
+      if (!btn.classList.contains('menu__link')) return
+
+      const section = document.querySelector(
+        `#${btn.getAttribute('href').slice(1)}`
+      )
+
+      section.scrollIntoView({ behavior: 'smooth' })
+    })
+  })
+
   //! Timer
 
   const deadline = new Date('2023-06-20')
@@ -115,12 +133,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function playVideo(event, playBtn) {
     const parent = event.target.closest('.about__video-box'),
+      videoControl = event.target.closest('.about__video-control'),
       video = parent.firstElementChild
 
     if (!video) return
 
     isPlayed = !isPlayed
     isPlayed ? video.play() : video.pause()
+    videoControl.classList.toggle('fade', isPlayed)
 
     playBtn.innerText = isPlayed ? 'Pause' : 'Play'
   }
@@ -135,11 +155,15 @@ window.addEventListener('DOMContentLoaded', () => {
     const self = e.target
 
     if (self.id === 'explore__checkbox' || self.id === 'limited__checkbox') {
-      const parent = self.closest('.explore__box')
-      list = parent.querySelectorAll('ul')
+      const parent = self.closest('.explore__box'),
+        toggleBox = self.closest('.explore__toggle'),
+        list = parent.querySelectorAll('ul')
 
       list[0].classList.toggle('visible')
       list[1].classList.toggle('visible')
+
+      toggleBox.nextElementSibling.classList.toggle('active')
+      toggleBox.previousElementSibling.classList.toggle('active')
     }
   }
 
@@ -289,4 +313,78 @@ window.addEventListener('DOMContentLoaded', () => {
   exploreBox.forEach((explore) => {
     exploreObserver.observe(explore)
   })
+
+  const aboutSection = document.querySelector('.about')
+
+  function aboutCallback(entries, observer) {
+    const section = entries[0].target,
+      videoBox = section.querySelector('.about__video-box')
+
+    if (entries[0].isIntersecting) {
+      section.style.transform = 'translateY(0)'
+      section.style.opacity = 1
+      videoBox.style.animationPlayState = 'running'
+      observer.unobserve(section)
+    }
+  }
+
+  const aboutObserver = new IntersectionObserver(aboutCallback, {
+    threshold: 0.1,
+  })
+
+  aboutObserver.observe(aboutSection)
+
+  const newsSection = document.querySelector('.news')
+
+  function newsCallback(entries, observer) {
+    const section = entries[0].target
+
+    if (entries[0].isIntersecting) {
+      section.style.transform = 'translateY(0)'
+      section.style.opacity = 1
+      observer.unobserve(section)
+    }
+  }
+
+  const newsObserver = new IntersectionObserver(newsCallback, {
+    threshold: 0.6,
+  })
+
+  newsObserver.observe(newsSection)
+
+  const faqSection = document.querySelector('.faq')
+
+  function faqCallback(entries, observer) {
+    const section = entries[0].target,
+      title = section.querySelector('.faq__title'),
+      accordeon = section.querySelector('.accordeon')
+
+    if (entries[0].isIntersecting) {
+      title.style.animationPlayState = 'running'
+      accordeon.style.animationPlayState = 'running'
+      observer.unobserve(section)
+    }
+  }
+
+  const faqObserver = new IntersectionObserver(faqCallback, { threshold: 0.5 })
+
+  faqObserver.observe(faqSection)
+
+  const footer = document.querySelector('.footer')
+
+  function footerCallback(entries, observer) {
+    const footer = entries[0].target
+
+    if (entries[0].isIntersecting) {
+      footer.style.transform = 'translateY(0)'
+      footer.style.opacity = 1
+      observer.unobserve(footer)
+    }
+  }
+
+  const footerObserver = new IntersectionObserver(footerCallback, {
+    threshold: 0.1,
+  })
+
+  footerObserver.observe(footer)
 })

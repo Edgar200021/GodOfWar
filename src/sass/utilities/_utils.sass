@@ -3,11 +3,17 @@
 	transform: translateX(-1000%)
 	opacity: 0
 
+.scroll-none 
+	overflow: hidden
+
 .show 
 	@include animation(opacity, .1s, .1s, backwards)
 
 .none 
 	display: none
+
+.fade 
+	opacity: 0
 
 .accent
 	color: var(--accent-color)
