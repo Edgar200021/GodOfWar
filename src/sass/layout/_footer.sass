@@ -1,0 +1,54 @@
+.footer 
+	grid-column: col-start 2 / col-end 9
+	position: relative
+	display: grid 
+	grid-template-rows: min-content 1fr min-content
+	padding: 0 8rem
+	padding-bottom: 1.3rem
+	color: var(--text-second-color)
+	&::after,&::before
+		content: ''
+		position: absolute
+		right: 5%
+		top: 0
+		width: 60rem
+		height: 44rem
+		z-index: -1
+		transform: translateY(-15rem)
+	&::after 
+		@include bg 
+		background-image: url('../assets/img/footer/footer-bg.png')
+	&::before 
+		@include bg 
+		background-color: rgba(28, 32, 35, 0.7)
+	&__top
+		margin-bottom: 5rem
+	&__middle 
+		margin-bottom: 3.8rem
+		text-align: center
+	&__bottom 
+		justify-self: center
+		text-align: center
+		&-descr 
+			@include font(1.6rem, 1.9rem)
+	&__descr 
+		@include font(1.4rem, 1.7rem)
+
+	&__menu-list .menu__item:last-child
+		margin-left: auto
+	&__menu-list .menu__item:last-child span 
+		opacity: .5
+	&__logo 
+		&-link
+			display: block
+			margin: 0 auto
+			width: 46px 
+			height: 35px
+			margin-bottom: 2rem
+			transition: transform .3s ease
+		&-link:hover 
+			transform: scale(1.2)
+	&__date 
+		display: block
+		@include font(1.6rem, 1.9rem)
+		margin-bottom: 1.3rem

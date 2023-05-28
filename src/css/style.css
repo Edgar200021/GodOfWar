@@ -951,11 +951,12 @@ h1, h2, h3, h4, h5, h6 {
   background-size: cover;
   background-repeat: no-repeat;
   background-size: 16px 15px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
   border: none;
 }
 .slider__btn:hover {
   transform: scale(1.1);
+  background-color: var(--accent-color);
 }
 .slider__btn_prev {
   left: 28rem;
@@ -1264,6 +1265,86 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.9rem;
   font-weight: 400;
   font-family: "Rubik";
+}
+
+.footer {
+  grid-column: col-start 2/col-end 9;
+  position: relative;
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  padding: 0 8rem;
+  padding-bottom: 1.3rem;
+  color: var(--text-second-color);
+}
+.footer::after, .footer::before {
+  content: "";
+  position: absolute;
+  right: 5%;
+  top: 0;
+  width: 60rem;
+  height: 44rem;
+  z-index: -1;
+  transform: translateY(-15rem);
+}
+.footer::after {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("../assets/img/footer/footer-bg.png");
+}
+.footer::before {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(28, 32, 35, 0.7);
+}
+.footer__top {
+  margin-bottom: 5rem;
+}
+.footer__middle {
+  margin-bottom: 3.8rem;
+  text-align: center;
+}
+.footer__bottom {
+  justify-self: center;
+  text-align: center;
+}
+.footer__bottom-descr {
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  font-weight: 400;
+  font-family: "Rubik";
+}
+.footer__descr {
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  font-weight: 400;
+  font-family: "Rubik";
+}
+.footer__menu-list .menu__item:last-child {
+  margin-left: auto;
+}
+.footer__menu-list .menu__item:last-child span {
+  opacity: 0.5;
+}
+.footer__logo-link {
+  display: block;
+  margin: 0 auto;
+  width: 46px;
+  height: 35px;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+.footer__logo-link:hover {
+  transform: scale(1.2);
+}
+.footer__date {
+  display: block;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  font-weight: 400;
+  font-family: "Rubik";
+  margin-bottom: 1.3rem;
 }
 
 .hide {
@@ -1629,13 +1710,9 @@ h1, h2, h3, h4, h5, h6 {
 .faq {
   grid-column: col-start 2/col-end 9;
   padding: 0 8rem;
+  margin-bottom: 15.5rem;
 }
 .faq__title {
   margin-bottom: 3.2rem;
   text-align: center;
-}
-
-.footer {
-  grid-column: col-start 2/col-end 9;
-  padding: 0 8rem;
 }/*# sourceMappingURL=style.css.map */

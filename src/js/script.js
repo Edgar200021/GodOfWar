@@ -161,25 +161,24 @@ window.addEventListener('DOMContentLoaded', () => {
 
   goToSlide(currentSlide)
 
-
   function nextSlide() {
-	if (currentSlide === maxSlide - 1) {
-		currentSlide = 0
-	} else {
-		currentSlide++
-	}
+    if (currentSlide === maxSlide - 1) {
+      currentSlide = 0
+    } else {
+      currentSlide++
+    }
 
-	goToSlide(currentSlide)
+    goToSlide(currentSlide)
   }
 
   function prevSlide() {
-	if (currentSlide === 0) {
-		currentSlide = maxSlide - 1
-	} else {
-		currentSlide--
-	}
+    if (currentSlide === 0) {
+      currentSlide = maxSlide - 1
+    } else {
+      currentSlide--
+    }
 
-	goToSlide(currentSlide)
+    goToSlide(currentSlide)
   }
 
   nextBtn.addEventListener('click', nextSlide)
@@ -190,14 +189,19 @@ window.addEventListener('DOMContentLoaded', () => {
 
   accordeon.addEventListener('click', (e) => {
     const self = e.target
-    if (!self.closest('.accordeon__btn')) return
+    const btn = self.closest('.accordeon__btn')
+    if (!btn) return
 
     const parent = self.closest('.accordeon__action'),
       actionSpan = parent.querySelector('.action-span'),
       content = parent.nextElementSibling
 
     content.classList.toggle('accordeon__content_active')
-    content.style.maxHeight = content.scrollHeight + 'px'
+    content.style.maxHeight = content.classList.contains(
+      'accordeon__content_active'
+    )
+      ? content.scrollHeight + 'px'
+      : 0
     actionSpan.classList.toggle('action-span_active')
     console.log(self.lastElementChild)
   })
