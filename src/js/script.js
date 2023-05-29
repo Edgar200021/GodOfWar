@@ -102,27 +102,25 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-  modalCloseBtn.addEventListener('click', (e) => {
-    e.preventDefault()
-
+  function closeModal() {
     modal.classList.remove('modal_active')
     form.classList.remove('form_active')
     document.body.style.overflow = 'auto'
-  })
+    form.reset()
+  }
 
   modal.addEventListener('click', (e) => {
-    if (e.target.classList.contains('modal_active')) {
-      e.target.classList.remove('modal_active')
-      form.classList.remove('form_active')
-      document.body.style.overflow = 'auto'
+    if (
+      e.target.classList.contains('modal_active') ||
+      e.target.classList.contains('close-btn')
+    ) {
+      closeModal()
     }
   })
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('modal_active')) {
-      modal.classList.remove('modal_active')
-      form.classList.remove('form_active')
-      document.body.style.overflow = 'auto'
+      closeModal()
     }
   })
 
@@ -229,6 +227,101 @@ window.addEventListener('DOMContentLoaded', () => {
     actionSpan.classList.toggle('action-span_active')
     console.log(self.lastElementChild)
   })
+
+  //! PostData
+
+
+  const messages = {
+    loading: '/src/assets/icons/spinner.svg',
+    success:
+      'Спасибо за покупку! В ближайшее время мы с вами свяжемся для доставки товара.',
+    fail: '	Что-то пошло не так. Проверьте данные, или попробуйте чуть позже.',
+  }
+
+  const requestURL = 'https://jsonplaceholder.typicode.com/users'
+
+  function postData(url, method, body = null) {
+    return new Promise((resolve, reject) => {
+      const xml = new XMLHttpRequest()
+
+      xml.open(method, url)
+      xml.setRequestHeader('Content-type', 'application/json')
+
+      xml.addEventListener('load', () => {
+        if (xml.status >= 200 && xml.status < 300) {
+          resolve(xml.response)
+        } else {
+          reject(xml.status)
+        }
+      })
+
+      xml.send(body)
+    })
+  }
+
+  function sendData(form, messages, requestURL) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+      const parent = e.target.closest('.modal'),
+        spinner = document.createElement('img')
+      spinner.src = messages.loading
+      spinner.classList.add('spinner')
+
+      e.target.append(spinner)
+
+      const formData = new FormData(e.target),
+        json = JSON.stringify(Object.fromEntries(formData))
+
+      postData(requestURL, 'POST', json)
+        .then((data) => {
+          console.log(JSON.parse(data))
+          spinner.remove()
+          const overlay = createMessageOverlay(requestMessage(messages.success))
+          e.target.classList.add('none')
+          modal.append(overlay)
+          setTimeout(() => {
+            deleteOverlay(e, overlay)
+          }, 3000)
+          form.reset()
+        })
+        .catch((err) => {
+          console.error(err)
+          spinner.remove()
+		  const overlay = createMessageOverlay(requestMessage(messages.fail))
+          e.target.classList.add('none')
+          modal.append(overlay)
+          setTimeout(() => {
+            deleteOverlay(e, overlay)
+          }, 3000)
+          form.reset()
+        })
+    })
+  }
+
+  sendData(form, messages, requestURL)
+
+  function requestMessage(message) {
+    const el = document.createElement('div'),
+      text = document.createElement('p')
+
+    el.classList.add('modal-message')
+    text.innerText = message
+    el.append(text)
+    return el
+  }
+
+  function createMessageOverlay(el) {
+    const messageOverlay = document.createElement('div')
+    messageOverlay.classList.add('message-overlay')
+    messageOverlay.append(el)
+    return messageOverlay
+  }
+
+  function deleteOverlay(e, overlay) {
+    closeModal()
+    e.target.classList.remove('none')
+    overlay.remove()
+  }
 
   //! intersection Observer,
 
