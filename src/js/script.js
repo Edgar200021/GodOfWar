@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   //! Timer
 
-  const deadline = new Date('2023-06-20')
+  const deadline = new Date('2024-5-20')
 
   function timeRemaining(deadline) {
     const remainingEnd = new Date(deadline) - new Date(),
