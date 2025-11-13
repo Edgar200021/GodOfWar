@@ -1,5 +1,4 @@
 window.addEventListener('DOMContentLoaded', () => {
-  //!Hamburger
 
   const hamburgerBtn = document.querySelector('.hamburger'),
     menu = document.querySelector('.menu')
@@ -9,8 +8,6 @@ window.addEventListener('DOMContentLoaded', () => {
     menu.classList.toggle('hide')
     menu.classList.toggle('show')
   })
-
-  //! Scroll
 
   const linkMenu = document.querySelectorAll('.menu__list')
 
@@ -28,9 +25,8 @@ window.addEventListener('DOMContentLoaded', () => {
     })
   })
 
-  //! Timer
 
-  const deadline = new Date('2024-5-20')
+  const deadline = new Date('2028-5-20')
 
   function timeRemaining(deadline) {
     const remainingEnd = new Date(deadline) - new Date(),
@@ -124,7 +120,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-  //! Video
   const videoBtn = document.querySelector('.about__video-btn')
 
   let isPlayed = false
@@ -167,7 +162,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   explore.addEventListener('click', togglerequirements)
 
-  //! Slider
   const slides = document.querySelectorAll('.slide'),
     prevBtn = document.querySelector('.slider__btn_prev'),
     nextBtn = document.querySelector('.slider__btn_next')
@@ -205,7 +199,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   nextBtn.addEventListener('click', nextSlide)
   prevBtn.addEventListener('click', prevSlide)
-  //!  Accordeon
 
   const accordeon = document.querySelector('.accordeon')
 
@@ -227,8 +220,6 @@ window.addEventListener('DOMContentLoaded', () => {
     actionSpan.classList.toggle('action-span_active')
     console.log(self.lastElementChild)
   })
-
-  //! PostData
 
 
   const messages = {
@@ -274,7 +265,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
       postData(requestURL, 'POST', json)
         .then((data) => {
-          console.log(JSON.parse(data))
           spinner.remove()
           const overlay = createMessageOverlay(requestMessage(messages.success))
           e.target.classList.add('none')
@@ -323,7 +313,6 @@ window.addEventListener('DOMContentLoaded', () => {
     overlay.remove()
   }
 
-  //! intersection Observer,
 
   const editionSection = document.querySelector('.editions'),
     cards = editionSection.querySelectorAll('.card'),
